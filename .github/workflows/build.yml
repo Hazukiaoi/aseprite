@@ -7,11 +7,11 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest, macos-latest, ubuntu-latest]
-        build_type: [debug]
+        build_type: [release]
         enable_ui: [off]
         include:
           - os: ubuntu-latest
-            build_type: debug
+            build_type: release
             enable_ui: on
     steps:
     - uses: actions/checkout@v2
@@ -65,5 +65,11 @@ jobs:
         export ASEPRITE=$PWD/bin/aseprite
         git clone --branch $TESTS_BRANCH --recursive https://github.com/aseprite/tests.git
         cd tests
-        $XVFB bash run-tests.sh
- 
+        $XVFB bash run-tests.sh 
+        zip –q –r aseprite_1.3b14.zip /home/wwwroot/build
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        path: "./*.zip"
+        name: "aseprite_1.3_b14"
+        
