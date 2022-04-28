@@ -9,10 +9,10 @@ jobs:
         os: [windows-latest]
         build_type: [release]
         enable_ui: [off]
-        include:
-          - os: ubuntu-latest
-            build_type: release
-            enable_ui: on
+        #include:
+        #  - os: ubuntu-latest
+        #    build_type: release
+        #    enable_ui: on
     steps:
     - uses: actions/checkout@v2
       with:
@@ -69,6 +69,6 @@ jobs:
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2.2.4
       with:
-        path: "D:/a/aseprite/aseprite/build"
+        path: "D:/a/aseprite/aseprite/build/bin"
         name: "aseprite_1.3_b14"
         
