@@ -6,7 +6,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os: [windows-latest]
         build_type: [release]
         enable_ui: [off]
         include:
@@ -66,10 +66,9 @@ jobs:
         git clone --branch $TESTS_BRANCH --recursive https://github.com/aseprite/tests.git
         cd tests
         $XVFB bash run-tests.sh 
-        zip –q –r aseprite_1.3b14.zip /home/wwwroot/build
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2.2.4
       with:
-        path: "./*.zip"
+        path: "D:/a/aseprite/aseprite/build"
         name: "aseprite_1.3_b14"
         
